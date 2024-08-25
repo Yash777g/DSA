@@ -1,2 +1,2 @@
 # DSA
-practicing and solving problems.
+practicing and solving problems in Data Structure Algorithm.
