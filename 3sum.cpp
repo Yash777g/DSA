@@ -5,7 +5,7 @@
 using namespace std;
 
 vector<vector<int>> threeSum(vector<int>& nums) {
-    int target = 0;
+    int target= 0;
     sort(nums.begin(), nums.end());
     set<vector<int>> sets;
     vector<vector<int>> output;
