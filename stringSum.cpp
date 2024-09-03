@@ -3,18 +3,27 @@
 using namespace std;
 
 int getLucky(string s, int k) {
-    int num = 0, flag = 0;
+    int ans = 0;
 
-    for(int i = s.size() - 1; i >= 0; i--) {
-        num = num + (s[i] - 'a' + 1) * pow(10, flag);
-        
-        
-        cout << num << "    " << (s[i] - 'a' + 1 )* pow(10, flag) << "     " << (s[i] - 'a' + 1)  << endl;
-        flag++;
+    for(char ch : s) {
+        int temp = ch - '`';
+
+        if(temp > 9) { ans += temp / 10; }
+        ans += temp % 10;
     }
 
-    //cout << num;
-    return 0;
+    while(--k) {
+        if(ans < 10) return ans;
+        int temp = 0;
+
+        while(ans) {
+            temp += ans % 10;
+            ans /= 10;
+        }
+
+        ans = temp;
+    }
+    return ans;
 }
 
 int main() {
