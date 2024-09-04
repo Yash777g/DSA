@@ -3,28 +3,25 @@
 using namespace std;
 
 int chalkReplacer(vector<int>& chalk, int k) {
-        long sum = 0;
-        int index = 0;
+    long long sum = 0;
+    int index = 0;
 
-        for (int i = 0; i < chalk.size(); i++) {
-            sum += chalk[i];
+    for (int i = 0; i < chalk.size(); i++) { sum += chalk[i]; }
+
+    k = k % sum;
+
+    for(int i = 0; i < chalk.size(); i++) {
+        if(k >= 0) {
+            k -= chalk[index];
+            index++;
         }
-
-        k = k % sum;
-
-        while (k > 0) {
-            if (chalk[index] < k) {
-                k -= chalk[index];
-                index++;
-            }
-
-            else {
-                k -= chalk[index];
-            }
+        else {
+            return index;
         }
-
-        return index;
     }
+
+    return index;
+}
 
 int main() {
     vector<int> chalk = {};
