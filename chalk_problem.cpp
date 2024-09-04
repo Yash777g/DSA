@@ -15,9 +15,7 @@ int chalkReplacer(vector<int>& chalk, int k) {
             k -= chalk[index];
             index++;
         }
-        else {
-            return index;
-        }
+        else { return index; }
     }
 
     return index;
