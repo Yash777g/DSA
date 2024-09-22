@@ -19,7 +19,49 @@ void insert(ListNode* &tail, int val) {
     tail = temp;
 }
 
-int getlenght(ListNode* head) {
+int getLen(ListNode*& head, ListNode*& tail) {
+    ListNode* temp = head;
+    int count = 0;
+    
+    while (temp != NULL) {
+        count++;
+        tail = temp;
+        temp = temp->next;
+    
+    }
+    return count;
+}
+
+ListNode* rotateRight(ListNode* head, int k) {
+    if (head == NULL || head->next == NULL || k == 0) {
+        return head;
+    }
+
+    ListNode* tail = NULL;
+
+    int len = getLen(head, tail);
+    int pos = k % len;
+
+    if (pos == 0) {
+        return head;
+    }
+    pos = len - pos;
+
+    tail->next = head;
+    ListNode* temp = NULL;
+
+    while (pos != 0) {
+        temp = head;
+        head = head->next;
+        pos--;
+    }
+
+    temp->next = NULL;
+    return head;
+}
+
+// more optimized code ??
+/*int getlenght(ListNode* head) {
     ListNode* temp = head;
     int cnt = 0;
 
@@ -58,7 +100,7 @@ ListNode* rotateRight(ListNode* head, int k) {
     if (head == NULL || head->next == NULL) { return head; }
 
     int len = getlenght(head);
-    len = k % len;   
+    k = k % len;   
 
     while(k > 0) {
         head = solve(head);
@@ -66,7 +108,7 @@ ListNode* rotateRight(ListNode* head, int k) {
     }
 
     return head;     
-}
+}*/
 
 void print(ListNode* head) {
     ListNode* temp = head;
