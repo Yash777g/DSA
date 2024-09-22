@@ -48,8 +48,6 @@ ListNode* deleteDuplicates(ListNode* head) {
     while(curr) {
         if(freq[curr->data] > 1 && curr == head) {
             head = head->next;
-            curr->next = NULL;
-            delete curr;
             curr = head;
         }
 
