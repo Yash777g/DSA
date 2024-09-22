@@ -34,7 +34,6 @@ ListNode* reverseList(ListNode* head) {
 
     ListNode* curr = head;
     ListNode* backward = NULL;
-
     ListNode* forward = NULL;
 
     while(curr != NULL) {
