@@ -30,7 +30,28 @@ void print(ListNode* head) {
     }cout << endl;
 }
 
-ListNode* swapNodes(ListNode* head, int k) {
+ListNode* swapNodes(ListNode* head, int k) {    
+    vector<int>arr;
+    ListNode*temp=head;
+        
+    while(temp!=nullptr){
+        arr.push_back(temp->data);
+        temp=temp->next;
+    }
+        
+    int n=arr.size();
+    swap(arr[k-1],arr[n-k]);
+    temp=head;
+        
+    for(int i=0;i<n;i++){
+        temp->data=arr[i];
+        temp=temp->next;
+    }
+    return head;
+}
+
+// array approach can be optimized;
+/*ListNode* swapNodes(ListNode* head, int k) {
     ListNode* temp = head;
     vector<int> nums;
 
@@ -54,7 +75,7 @@ ListNode* swapNodes(ListNode* head, int k) {
     }
 
     return dummy->next;
-}
+}*/
 
 int main() {
     ListNode* head = new ListNode(1);
