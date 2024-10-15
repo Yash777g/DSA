@@ -20,7 +20,7 @@ void insert(ListNode* &tail, int val) {
 }
 
 ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-    ListNode* head = new ListNode(0);
+    ListNode* head = new ListNode();
     ListNode* curr = head;
 
     while(list1 != NULL && list2 != NULL) {

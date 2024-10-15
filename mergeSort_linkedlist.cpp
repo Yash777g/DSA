@@ -49,7 +49,7 @@ ListNode* mergelist(ListNode* left, ListNode* right) {
     if(!right) 
         return left;
 
-    ListNode* dummyhead = new ListNode(0);
+    ListNode* dummyhead = new ListNode();
     ListNode* curr = dummyhead;
 
     while(left != nullptr && right != nullptr) {
