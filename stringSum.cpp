@@ -31,6 +31,6 @@ int main() {
     int k = 2;
 
     int sol = getLucky(s, k);
-    //cout << sol;
+    cout << sol;
     return 0;
 }
