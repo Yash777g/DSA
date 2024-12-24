@@ -13,7 +13,9 @@ string mergeAlternately(string word1, string word2) {
             ans += word2[i];
     }
 
-    ans.append(word2.substr(i, word2.size()));
+    if(i < word2.size())
+        ans.append(word2.substr(i, word2.size()));
+    
     return ans;
 }
 
