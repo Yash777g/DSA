@@ -4,27 +4,22 @@
 using namespace std;
 
 int maxArea(vector<int>& height) {
-        int n = height.size();
-        if (n == 1)
-            return height[0];
-        if (n == 2)
-            return min(height[0], height[1]);
+    int n = height.size();
+    int i = 0, j = n - 1;
+    int area = 0;
 
-        int i = 0, j = n - 1;
-        int maxArea = 0;
+    while (i < j) {
+        int currentArea = min(height[i], height[j]) * (j - i);
+        area = max(area, currentArea);
 
-        while (i < j) {
-            int area = min(height[i], height[j])*(j-i);
-            maxArea = max(maxArea, area);
-
-            if (height[i] < height[j]) {
-                i++;
-            } else {
-                j++;
-            }
+        if (height[i] < height[j]) {
+            i++;
+        } else {
+            j--;
         }
-        return maxArea;
-    }
+    } return area;
+}
+
 
 int main() {
     vector<int> height = {1,3,2,5,25,24,5};
