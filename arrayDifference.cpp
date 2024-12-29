@@ -24,13 +24,10 @@ vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2) {
     for(auto &i : freq) {
         if(i.second == 1) {
             ans[0].push_back(i.first);
-        } 
-        if(i.second == -1) {
+        } if(i.second == -1) {
             ans[1].push_back(i.first);
         }
-    }
-
-    return ans;
+    } return ans;
 }
 
 
