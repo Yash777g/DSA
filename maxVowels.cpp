@@ -12,17 +12,17 @@ bool isVowel(char c) {
 
 int maxVowels(string s, int k) {
     int j = 0, count = 0, curr = 0;
-    for(int i = 0; i < s.size() - k; i++) {
-        if(isVowel(s[i])) {
+    for (int i = 0; i < s.size(); i++) {
+        if (isVowel(s[i])) {
             curr++;
-        } 
-        if(i - j + 1 == k) {
-            if(isVowel(s[j])) {
-                count = max(count, curr);
+        }
+        if (i >= k) {
+            if (isVowel(s[j])) {
                 curr--;
             }
             j++;
         }
+        count = max(count, curr);
     }
     return count;
 }
