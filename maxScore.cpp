@@ -6,7 +6,6 @@ using namespace std;
 
 int maxScore(string s) {
     int score = 0, zero = 0, one = 0;
-
     for(auto &ch: s) {
         if(ch == '1') one++;
     }
@@ -16,9 +15,7 @@ int maxScore(string s) {
         else one--;
 
         score = max(score, zero + one);
-    }
-
-    return score;
+    } return score;
 }
 
 int main() {
