@@ -5,7 +5,6 @@ using namespace std;
 
 string removeStars(string s) {
     string str = "";
-    int stars = 0;
 
     for(char &ch : s) {
         if(ch == '*') {
