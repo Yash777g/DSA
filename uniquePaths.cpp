@@ -3,9 +3,8 @@
 #include <algorithm>
 using namespace std;
 
-
-
 int uniquePaths(int m, int n) {
+    if(m == 1 && n == 1) return 1;
     vector<vector<int>> dp(m+1,vector<int>(n+1,0));
     int count = 0;
 
