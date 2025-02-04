@@ -9,7 +9,6 @@ int maxAscendingSum(vector<int>& nums) {
     for(int i = 1; i < nums.size(); i++) {
         if(nums[i-1] < nums[i]) {
             currSum +=  nums[i];
-            cout << currSum << endl;
         } else {
             maxSum = max(maxSum, currSum);
             currSum = nums[i];
