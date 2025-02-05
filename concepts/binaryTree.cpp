@@ -62,11 +62,55 @@ void bfsTraversal(Treenode* root) {
         }
     }
 }
+// 1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
+
+// inorder traversal : L->left/N->node/R->right
+void inorderTraversal(Treenode* root) {
+    if(root == nullptr) {
+        return;
+    }
+
+    inorderTraversal(root->left);
+    cout << root->data << " ";
+    inorderTraversal(root->right);
+}
+
+// pre-order traversal: N->node/L->left/R->right
+void preorderTraversal(Treenode* root) {
+    if(root == nullptr) {
+        return;
+    }
+
+    cout << root->data << " ";
+    preorderTraversal(root->left);
+    preorderTraversal(root->right);
+}
+
+// post-order traversal: L->left/R->right/N->node
+void postorderTraversal(Treenode* root) {
+    if(root == nullptr) {
+        return;
+    }
+
+    postorderTraversal(root->left);
+    postorderTraversal(root->right);
+    cout << root->data << " ";
+}
 
 int main() {
     Treenode *root = nullptr;
     root = addNode(root);
 
+    cout << endl;
     bfsTraversal(root);
+
+    cout << endl;
+    inorderTraversal(root);
+
+    cout << endl;
+    preorderTraversal(root);
+
+    cout << endl;
+    postorderTraversal(root);
     return 0;
 }
