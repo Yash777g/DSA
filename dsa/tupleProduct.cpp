@@ -29,6 +29,9 @@ int tupleSameProduct(vector<int>& nums) {
             countcurr = 1;
         }
     }
+
+    int combination = countcurr*(countcurr - 1) / 2;
+    count += 8*combination;
     
     return count;
 }
