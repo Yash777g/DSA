@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <queue>
 using namespace std;
 
@@ -38,18 +37,32 @@ void print(TreeNode* root) {
     }
 }
 
-TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
-    int index = 0, max = -1;
+int height(TreeNode* root) {
+    if(!root) {
+        return 0;
+    }
+
     
+}
 
-
-    //return root;
+bool isBalanced(TreeNode* root) {
+    int left = height(root->left);  
+    int right = height(root->right);
+    
+    if(abs(left-right) == 1 || left-right == 0) {
+        return true;
+    } return false;
 }
 
 int main() {
-    vector<int> nums = {3,2,1,6,0,5};
-    TreeNode* root = constructMaximumBinaryTree(nums);
+    TreeNode* root = new TreeNode(3);
+    
+    root->left = new TreeNode(9);
+    root->right = new TreeNode(20);
+    root->right->left = new TreeNode(15);
+    root->right->right = new TreeNode(7);
 
     print(root);
     return 0;
 }
+
