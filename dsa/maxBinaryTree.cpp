@@ -38,12 +38,31 @@ void print(TreeNode* root) {
     }
 }
 
+int findmax(vector<int>& nums, int low, int high) {
+    int index = -1, max = -1;
+    for(int i = low; i < high; i++) {
+        if(nums[i] > max) {
+            max = nums[i];
+            index = i;
+        }
+    } return index;
+}
+
+TreeNode* construct(vector<int>& nums, int low, int high){
+    if(low >= high) {
+        return nullptr;
+    }
+
+    int index = findmax(nums, low, high);
+
+    TreeNode* root = new TreeNode(nums[index]);
+
+    root->left = construct(nums, low, index);
+    root->right = construct(nums, index+1, high);
+} 
+
 TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
-    int index = 0, max = -1;
-    
-
-
-    //return root;
+    return construct(nums, 0, nums.size());
 }
 
 int main() {
