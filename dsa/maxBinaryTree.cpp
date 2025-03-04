@@ -59,6 +59,8 @@ TreeNode* construct(vector<int>& nums, int low, int high){
 
     root->left = construct(nums, low, index);
     root->right = construct(nums, index+1, high);
+    
+    return root;
 } 
 
 TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
