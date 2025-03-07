@@ -1,0 +1,4 @@
+import pprint
+
+data = {"name": "Bob", "age": 30, "hobbies": ["reading", "gaming"]}
+pprint.pprint(data)

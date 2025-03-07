@@ -41,17 +41,21 @@ int height(TreeNode* root) {
     if(!root) {
         return 0;
     }
-
     
+    int left = height(root->left);
+    if(left == -1) return -1;
+
+    int right = height(root->right);
+    if(right == -1) return -1;
+
+    if (abs(left - right) > 1) return -1;
+
+    int ans = max(left, right) + 1;
+    return ans;
 }
 
 bool isBalanced(TreeNode* root) {
-    int left = height(root->left);  
-    int right = height(root->right);
-    
-    if(abs(left-right) == 1 || left-right == 0) {
-        return true;
-    } return false;
+    return height(root) != -1;
 }
 
 int main() {
