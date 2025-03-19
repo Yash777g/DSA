@@ -38,20 +38,35 @@ void print(TreeNode* root) {
     } cout << endl;
 }
 
-void solve(vector<int>& ans, TreeNode* root) {
-    if(!root) {
-        return ;
+vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+    vector<vector<int>> ans;
+    if (!root) return ans;
+
+    queue<TreeNode*> q;
+    q.push(root);
+    bool leftToRight = true;
+
+    while (!q.empty()) {
+        int size = q.size();
+        deque<int> levelNodes;
+
+        for (int i = 0; i < size; i++) {
+            TreeNode* node = q.front();
+            q.pop();
+
+            if (leftToRight)
+                levelNodes.push_back(node->val);
+            else
+                levelNodes.push_front(node->val);
+
+            if (node->left) q.push(node->left);
+            if (node->right) q.push(node->right);
+        }
+
+        ans.push_back(vector<int>(levelNodes.begin(), levelNodes.end()));
+        leftToRight = !leftToRight;  // Toggle direction
     }
 
-    solve(ans,root->left);
-    ans.push_back(root->val);
-    solve(ans,root->right);
-}
-
-vector<int> inorderTraversal(TreeNode* root) {
-    vector<int> ans;
-
-    solve(ans, root);
     return ans;
 }
 
@@ -65,9 +80,6 @@ int main() {
 
     print(root);
 
-    vector<int> ans = inorderTraversal(root);
-    for(auto i : ans) {
-        cout << i << "  ";
-    } cout << endl;
+    zigzagLevelOrder(root);
     return 0;
 }
