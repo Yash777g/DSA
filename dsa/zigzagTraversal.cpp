@@ -40,31 +40,30 @@ void print(TreeNode* root) {
 
 vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
     vector<vector<int>> ans;
-    if (!root) return ans;
-
     queue<TreeNode*> q;
     q.push(root);
-    bool leftToRight = true;
+    bool flag = true;
 
-    while (!q.empty()) {
+    while(!q.empty()) {
         int size = q.size();
-        deque<int> levelNodes;
+        deque<int> temp;
 
-        for (int i = 0; i < size; i++) {
-            TreeNode* node = q.front();
+        for(int i = 0; i < size; i++) {
+            TreeNode* data = q.front();
             q.pop();
 
-            if (leftToRight)
-                levelNodes.push_back(node->val);
-            else
-                levelNodes.push_front(node->val);
+            if(flag) { temp.push_back(data->val); }
+            else { temp.push_front(data->val); }
 
-            if (node->left) q.push(node->left);
-            if (node->right) q.push(node->right);
+            if(data->left) {
+                q.push(data->left);
+            } if(data->right) {
+                q.push(data->right);
+            }
         }
 
-        ans.push_back(vector<int>(levelNodes.begin(), levelNodes.end()));
-        leftToRight = !leftToRight;  // Toggle direction
+        flag = !flag;
+        ans.push_back(vector<int>(temp.begin(), temp.end()));
     }
 
     return ans;
